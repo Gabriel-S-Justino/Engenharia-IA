@@ -2,6 +2,7 @@
 // Nomes semânticos: descrevem o PAPEL da cor, não a cor em si.
 // O tema light sobrescreve estes mesmos tokens.
 :root {
+  color-scheme: dark; // scrollbar e controles nativos escuros
   --color-bg: #0a0f1e; // fundo da página
   --color-surface: #141b2f; // cards e blocos elevados
   --color-border: #232c47; // divisórias e contorno de cards
@@ -9,4 +10,18 @@
   --color-text-secondary: #a3aecb; // bio, datas, descrições (8.6:1)
   --color-accent: #7aa2ff; // nós da timeline, filtro ativo, links (7.7:1)
   --color-on-accent: #0a0f1e; // texto sobre fundo de acento (7.7:1)
+}
+
+// ─── TOKENS DE COR — TEMA LIGHT ───────────────────────────
+// :root[data-theme] tem especificidade (0,2,0) e vence o :root (0,1,0)
+// em qualquer ordem no arquivo. O atributo é aplicado no <html>.
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-bg: #f6f7fb; // gelo
+  --color-surface: #ffffff; // cards brancos sobre fundo gelo
+  --color-border: #dde1ec; // contorno sutil (decorativo)
+  --color-text: #141a2e; // 16.1:1 no fundo · 17.3:1 no card
+  --color-text-secondary: #4b5470; // 7.0:1 no fundo · 7.5:1 no card
+  --color-accent: #3355d6; // 5.8:1 no fundo · 6.2:1 no card
+  --color-on-accent: #ffffff; // texto sobre fundo de acento (6.2:1)
 }

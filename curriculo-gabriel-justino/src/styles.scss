@@ -50,3 +50,33 @@
   --color-accent: #3355d6; // 5.8:1 no fundo · 6.2:1 no card
   --color-on-accent: #ffffff; // texto sobre fundo de acento (6.2:1)
 }
+
+// ─── RESET ────────────────────────────────────────────────
+// Remove diferenças entre navegadores. Inclui pseudo-elementos
+// porque os nós da timeline serão ::before/::after.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── BASE ─────────────────────────────────────────────────
+html {
+  // Rolagem suave só para quem não pediu menos movimento ao sistema
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; // efeito apenas no macOS
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}

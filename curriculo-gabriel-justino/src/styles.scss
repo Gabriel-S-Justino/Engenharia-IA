@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+// ─── TOKENS DE COR — TEMA DARK (padrão) ───────────────────
+// Nomes semânticos: descrevem o PAPEL da cor, não a cor em si.
+// O tema light sobrescreve estes mesmos tokens.
+:root {
+  --color-bg: #0a0f1e; // fundo da página
+  --color-surface: #141b2f; // cards e blocos elevados
+  --color-border: #232c47; // divisórias e contorno de cards
+  --color-text: #e8ecf8; // texto principal (16.2:1)
+  --color-text-secondary: #a3aecb; // bio, datas, descrições (8.6:1)
+  --color-accent: #7aa2ff; // nós da timeline, filtro ativo, links (7.7:1)
+  --color-on-accent: #0a0f1e; // texto sobre fundo de acento (7.7:1)
+}

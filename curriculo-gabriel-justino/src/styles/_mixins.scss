@@ -1,0 +1,19 @@
+// ─── BREAKPOINTS ──────────────────────────────────────────
+// $variáveis (e não --custom-properties) porque var() não funciona
+// dentro de @media. São constantes de build.
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+// Mobile-first: o estilo base vale para telas pequenas;
+// estes mixins acrescentam regras a partir de cada largura.
+@mixin tablet {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}

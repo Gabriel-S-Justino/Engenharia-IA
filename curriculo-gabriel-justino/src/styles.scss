@@ -36,6 +36,7 @@
   --color-accent: #7aa2ff; // nós da timeline, filtro ativo, links (7.7:1)
   --color-on-accent: #0a0f1e; // texto sobre fundo de acento (7.7:1)
   --color-star-core: #ffffff; // núcleo das estrelas (cards e céu)
+  --color-star: rgba(232, 236, 248, 0.8); // estrelas pequenas do céu
 }
 
 // ─── TOKENS DE COR — TEMA LIGHT ───────────────────────────
@@ -51,6 +52,7 @@
   --color-accent: #3355d6; // 5.8:1 no fundo · 6.2:1 no card
   --color-on-accent: #ffffff; // texto sobre fundo de acento (6.2:1)
   --color-star-core: #3355d6; // no céu claro, núcleo azul para não sumir
+  --color-star: rgba(51, 85, 214, 0.2); // "céu de dia": estrelas quase apagadas
 }
 
 // ─── RESET ────────────────────────────────────────────────
@@ -81,4 +83,58 @@ body {
   transition:
     background-color var(--transition-base),
     color var(--transition-base);
+}
+
+// ─── CÉU ESTRELADO ────────────────────────────────────────
+// Duas camadas fixas atrás de todo o conteúdo, feitas só com gradientes
+// repetidos (sem imagens). ::before = estrelas pequenas;
+// ::after = estrelas brilhantes com raios de difração, que cintilam.
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background-image:
+    radial-gradient(1px 1px at 23px 41px, var(--color-star), transparent),
+    radial-gradient(1px 1px at 87px 133px, var(--color-star), transparent),
+    radial-gradient(1px 1px at 151px 19px, var(--color-star), transparent),
+    radial-gradient(1.5px 1.5px at 199px 171px, var(--color-star), transparent),
+    radial-gradient(1px 1px at 61px 211px, var(--color-star), transparent),
+    radial-gradient(1px 1px at 223px 89px, var(--color-star), transparent);
+  background-size: 233px 241px; // tamanhos "primos" disfarçam a repetição
+  opacity: 0.7;
+}
+
+// Cada estrela brilhante = núcleo + raio horizontal + raio vertical
+// (elipses bem finas desenhadas com radial-gradient).
+body::after {
+  background-image:
+    radial-gradient(circle 2px at 47px 97px, var(--color-star-core), transparent),
+    radial-gradient(9px 1px at 47px 97px, var(--color-accent), transparent),
+    radial-gradient(1px 9px at 47px 97px, var(--color-accent), transparent),
+    radial-gradient(circle 2.5px at 263px 233px, var(--color-star-core), transparent),
+    radial-gradient(12px 1px at 263px 233px, var(--color-accent), transparent),
+    radial-gradient(1px 12px at 263px 233px, var(--color-accent), transparent),
+    radial-gradient(circle 1.5px at 331px 41px, var(--color-star-core), transparent),
+    radial-gradient(7px 1px at 331px 41px, var(--color-accent), transparent),
+    radial-gradient(1px 7px at 331px 41px, var(--color-accent), transparent);
+  background-size: 397px 409px;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: cintilar-ceu 6s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes cintilar-ceu {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
 }

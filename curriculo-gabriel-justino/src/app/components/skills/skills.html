@@ -1,1 +1,28 @@
-<p>skills works!</p>
+<section class="skills" aria-labelledby="skills-titulo">
+  <h2 id="skills-titulo" class="skills__titulo">Habilidades</h2>
+
+  <div class="skills__filtros" role="group" aria-label="Filtrar por categoria">
+    @for (categoria of categorias(); track categoria) {
+      <button
+        type="button"
+        class="skills__filtro"
+        [class.skills__filtro--ativo]="filtroAtivo() === categoria"
+        [attr.aria-pressed]="filtroAtivo() === categoria"
+        (click)="selecionar(categoria)"
+      >
+        {{ categoria }}
+      </button>
+    }
+  </div>
+
+  <ul class="skills__lista">
+    @for (skill of skillsFiltradas(); track skill.nome) {
+      <li class="skills__item">
+        <span class="skills__nome">{{ skill.nome }}</span>
+        <span class="skills__nivel">{{ skill.nivel }}</span>
+      </li>
+    } @empty {
+      <li class="skills__vazio">Nenhuma skill nesta categoria.</li>
+    }
+  </ul>
+</section>

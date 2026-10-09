@@ -15,10 +15,11 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  // Responsabilidade do App é compor a página: garante que o Hero está montado.
+  it('should render the hero', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, curriculo-gabriel-justino');
+    expect(compiled.querySelector('app-hero')).not.toBeNull();
   });
 });

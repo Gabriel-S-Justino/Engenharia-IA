@@ -54,6 +54,13 @@ export class Skills {
       : this.skills().filter((s) => s.categoria === filtro);
   });
 
+  // Derivado: ângulo que gira a órbita para o planeta ativo ficar no topo.
+  protected readonly rotacao = computed(() => {
+    const lista = this.categorias();
+    const indice = lista.indexOf(this.filtroAtivo());
+    return -(360 / lista.length) * indice;
+  });
+
   protected selecionar(categoria: Categoria | 'Todos'): void {
     this.filtroAtivo.set(categoria);
   }

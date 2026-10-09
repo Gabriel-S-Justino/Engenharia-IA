@@ -10,12 +10,14 @@
   align-items: center;
   text-align: center;
   gap: var(--space-lg);
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-2xl) var(--respiro-lateral);
 
   @include tablet {
     flex-direction: row; // tablet+: avatar à esquerda, texto à direita
     text-align: left;
     gap: var(--space-2xl); // espaço para o anel e a lua não tocarem o texto
+    // o anel passa ~41px para fora do planeta: reserva esse espaço à esquerda
+    padding-inline-start: calc(var(--respiro-lateral) + 3rem);
   }
 
   // Avatar-planeta: o anel é desenhado duas vezes e cada cópia é

@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 // ─── TOKENS GERAIS (iguais nos dois temas) ────────────────
 // Espaçamentos em rem: acompanham a fonte padrão escolhida pelo usuário.
 // Raios ficam em px: são decorativos e não precisam escalar.
@@ -20,6 +22,11 @@
 
   // Layout — em rem para acompanhar a fonte escolhida pelo usuário
   --largura-pagina: 68.75rem; // 1100px
+  --respiro-lateral: var(--space-md); // margem interna das seções no celular
+
+  @include tablet {
+    --respiro-lateral: var(--space-lg);
+  }
 
   // Transições
   --transition-fast: 150ms ease; // hover, foco

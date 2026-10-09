@@ -1,11 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { Hero } from './components/hero/hero';
 
 @Component({
-  imports: [],
+  imports: [Hero],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
-export class App {
-  protected readonly title = signal('curriculo-gabriel-justino');
-}
+export class App {}

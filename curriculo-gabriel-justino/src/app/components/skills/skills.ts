@@ -1,8 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
-import { Categoria, Skill } from '../../models/skill';
+import { Filtro, Skill } from '../../models/skill';
+import { Orbita } from '../orbita/orbita';
 
 @Component({
-  imports: [],
+  imports: [Orbita],
   selector: 'app-skills',
   styleUrl: './skills.scss',
   templateUrl: './skills.html',
@@ -38,7 +39,7 @@ export class Skills {
   ]);
 
   // Estado de origem: a escolha do usuário.
-  protected readonly filtroAtivo = signal<Categoria | 'Todos'>('Todos');
+  protected readonly filtroAtivo = signal<Filtro>('Todos');
 
   // Derivado: só categorias que têm skills cadastradas.
   protected readonly categorias = computed(() => {
@@ -54,14 +55,7 @@ export class Skills {
       : this.skills().filter((s) => s.categoria === filtro);
   });
 
-  // Derivado: ângulo que gira a órbita para o planeta ativo ficar no topo.
-  protected readonly rotacao = computed(() => {
-    const lista = this.categorias();
-    const indice = lista.indexOf(this.filtroAtivo());
-    return -(360 / lista.length) * indice;
-  });
-
-  protected selecionar(categoria: Categoria | 'Todos'): void {
+  protected selecionar(categoria: Filtro): void {
     this.filtroAtivo.set(categoria);
   }
 }

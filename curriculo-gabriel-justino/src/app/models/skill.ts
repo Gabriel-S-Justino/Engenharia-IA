@@ -11,6 +11,9 @@ export type Categoria =
 
 export type Nivel = 'Domínio' | 'Uso' | 'Estudo';
 
+// Opções do filtro de skills: uma categoria ou todas.
+export type Filtro = Categoria | 'Todos';
+
 export interface Skill {
   nome: string;
   categoria: Categoria;

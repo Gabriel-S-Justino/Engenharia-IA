@@ -1,25 +1,11 @@
 <section class="skills" aria-labelledby="skills-titulo">
   <h2 id="skills-titulo" class="skills__titulo">Habilidades</h2>
 
-  <!-- Sistema planetário: o sol é decorativo; os planetas são os filtros -->
-  <div class="orbita" [style.--rotacao]="rotacao() + 'deg'">
-    <span class="orbita__sol" aria-hidden="true">GJ</span>
-    <div class="orbita__anel" role="group" aria-label="Filtrar por categoria">
-      @for (categoria of categorias(); track categoria; let i = $index, total = $count) {
-        <button
-          type="button"
-          class="orbita__planeta"
-          [style.--angulo]="(360 / total) * i + 'deg'"
-          [class.orbita__planeta--ativo]="filtroAtivo() === categoria"
-          [attr.aria-pressed]="filtroAtivo() === categoria"
-          (click)="selecionar(categoria)"
-        >
-          <span class="orbita__esfera" aria-hidden="true"></span>
-          <span class="orbita__rotulo">{{ categoria }}</span>
-        </button>
-      }
-    </div>
-  </div>
+  <app-orbita
+    [categorias]="categorias()"
+    [ativo]="filtroAtivo()"
+    (selecionar)="selecionar($event)"
+  />
 
   <ul class="skills__lista">
     @for (skill of skillsFiltradas(); track skill.nome) {

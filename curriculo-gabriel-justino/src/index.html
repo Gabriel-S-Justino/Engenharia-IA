@@ -5,6 +5,24 @@
   <title>CurriculoGabrielJustino</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Roda ANTES do Angular, para a primeira pintura já sair no tema certo
+    // (evita o "flash" de tema errado). Prioridade: escolha salva > sistema.
+    // Fica ANTES dos <link rel="stylesheet">: um script depois de uma folha
+    // de estilo externa espera ela terminar de baixar para poder rodar.
+    (function () {
+      var salvo = null;
+      try {
+        salvo = localStorage.getItem('tema');
+      } catch (e) {
+        // armazenamento bloqueado (ex.: aba anônima restrita): segue o sistema
+      }
+      var sistemaClaro = window.matchMedia('(prefers-color-scheme: light)').matches;
+      if (salvo === 'light' || (salvo === null && sistemaClaro)) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

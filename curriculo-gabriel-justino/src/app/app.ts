@@ -3,9 +3,10 @@ import { Hero } from './components/hero/hero';
 import { Skills } from './components/skills/skills';
 import { Trajetoria } from './components/trajetoria/trajetoria';
 import { Contato } from './components/contato/contato';
+import { ToggleTema } from './components/toggle-tema/toggle-tema';
 
 @Component({
-  imports: [Hero, Skills, Trajetoria, Contato],
+  imports: [ToggleTema, Hero, Skills, Trajetoria, Contato],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

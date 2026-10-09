@@ -1,0 +1,97 @@
+@use 'mixins' as *;
+
+:host {
+  display: block;
+}
+
+.contato {
+  padding: var(--space-2xl) var(--space-lg);
+
+  &__titulo {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    margin-bottom: var(--space-lg);
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+
+    @include tablet {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  // Botões e links compartilham o mesmo "corpo" visual
+  &__link,
+  &__botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    @media (hover: hover) {
+      &:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+        box-shadow: 0 0 18px -6px var(--color-accent);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+  }
+
+  &__link {
+    width: 100%;
+
+    @include tablet {
+      width: auto;
+    }
+  }
+
+  &__icone {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  &__copiar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  &__email {
+    color: var(--color-text-secondary);
+    overflow-wrap: anywhere; // e-mail longo quebra em vez de estourar no mobile
+  }
+
+  &__botao {
+    padding-block: var(--space-xs);
+    font-size: 0.875rem;
+  }
+}

@@ -22,4 +22,13 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('app-hero')).not.toBeNull();
   });
+
+  // Garante o mapa de regiões: conteúdo principal e rodapé com o Contato.
+  it('should render main and footer landmarks', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelectorAll('main').length).toBe(1);
+    expect(compiled.querySelector('footer app-contato')).not.toBeNull();
+  });
 });

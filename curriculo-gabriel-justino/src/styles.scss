@@ -18,6 +18,9 @@
   --radius-md: 12px; // cards
   --radius-full: 9999px; // badges, avatar, nós da timeline
 
+  // Layout — em rem para acompanhar a fonte escolhida pelo usuário
+  --largura-pagina: 68.75rem; // 1100px
+
   // Transições
   --transition-fast: 150ms ease; // hover, foco
   --transition-base: 300ms ease; // entradas, troca de tema

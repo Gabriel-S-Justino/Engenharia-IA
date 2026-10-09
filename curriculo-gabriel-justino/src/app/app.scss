@@ -1,0 +1,7 @@
+// O componente raiz centraliza a página e limita a largura do conteúdo.
+// O céu estrelado (no body) continua ocupando a tela inteira.
+:host {
+  display: block;
+  max-width: var(--largura-pagina);
+  margin-inline: auto;
+}

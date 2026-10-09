@@ -2,6 +2,12 @@
 
 :host {
   display: block;
+
+  // Entrada suave só no Hero (Fase 6): o conteúdo nunca depende da animação
+  // para aparecer — sem movimento permitido, ele já está visível.
+  @media (prefers-reduced-motion: no-preference) {
+    animation: surgir 400ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
 }
 
 .hero {
@@ -134,5 +140,16 @@
   }
   to {
     transform: rotate(360deg) translateX(112px);
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

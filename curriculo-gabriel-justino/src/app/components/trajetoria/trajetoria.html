@@ -3,7 +3,7 @@
 
   <ol class="trajetoria__lista">
     @for (marco of marcos(); track marco.titulo) {
-      <li class="marco" [attr.data-tipo]="marco.tipo" [class.marco--destaque]="marco.destaque">
+      <li class="marco" [attr.data-tipo]="marco.tipo" [attr.data-situacao]="marco.situacao" [class.marco--destaque]="marco.destaque">
         <span class="marco__no" aria-hidden="true"></span>
 
         <div class="marco__conteudo">

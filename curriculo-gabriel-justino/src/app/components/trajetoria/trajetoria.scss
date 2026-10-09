@@ -1,0 +1,147 @@
+@use 'mixins' as *;
+
+:host {
+  display: block;
+}
+
+.trajetoria {
+  padding: var(--space-2xl) var(--space-lg);
+
+  &__titulo {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    margin-bottom: var(--space-xl);
+  }
+
+  &__lista {
+    --coluna-no: 36px; // faixa onde ficam a linha e os planetas
+    --centro-no: 13px; // altura do centro de todo nó, a partir do topo do marco
+    --espaco: var(--space-xl); // distância entre marcos
+    list-style: none;
+    display: grid;
+    gap: var(--espaco);
+  }
+}
+
+.marco {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--coluna-no) 1fr;
+  gap: var(--space-md);
+
+  // Segmento da trajetória: do centro deste nó até o centro do próximo.
+  // O último marco não tem segmento — a linha termina no centro dele.
+  &::before {
+    content: '';
+    position: absolute;
+    top: var(--centro-no);
+    bottom: calc((var(--espaco) + var(--centro-no)) * -1);
+    left: calc(var(--coluna-no) / 2 - 1px);
+    width: 2px;
+    background: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  }
+
+  &:last-child::before {
+    content: none;
+  }
+
+  // O nó: um planeta sobre a linha. O tipo muda a aparência.
+  &__no {
+    position: relative; // fica acima do segmento
+    justify-self: center;
+    margin-top: calc(var(--centro-no) - 7px);
+    width: 14px;
+    height: 14px;
+    border-radius: var(--radius-full);
+    background: radial-gradient(circle at 35% 30%, var(--color-star-core), var(--color-accent) 70%);
+    box-shadow: 0 0 10px -2px var(--color-accent);
+
+    // formação: planeta "vazado", ainda em formação
+    [data-tipo='formacao'] & {
+      background: var(--color-bg);
+      border: 2px solid var(--color-accent);
+    }
+  }
+
+  // destaque: planeta maior, com anel
+  &--destaque &__no {
+    margin-top: calc(var(--centro-no) - 11px);
+    width: 22px;
+    height: 22px;
+    box-shadow: 0 0 18px 2px var(--color-accent);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 30% -45%;
+      border: 1.5px solid var(--color-accent);
+      border-radius: 50%;
+      transform: rotate(-20deg);
+    }
+  }
+
+  &__conteudo {
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  &--destaque &__conteudo {
+    border-color: color-mix(in srgb, var(--color-accent) 60%, var(--color-border));
+    box-shadow: 0 0 28px -14px var(--color-accent);
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+  }
+
+  &__situacao {
+    padding: 2px var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    // "Em produção" é o selo mais forte: preenchido com o acento
+    [data-situacao='Em produção'] & {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-on-accent);
+    }
+  }
+
+  &__titulo {
+    margin-top: var(--space-xs);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  &__descricao {
+    margin-top: var(--space-xs);
+    color: var(--color-text-secondary);
+  }
+
+  &__tecnologias {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+  }
+
+  &__tecnologia {
+    padding: 2px var(--space-sm);
+    border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+}

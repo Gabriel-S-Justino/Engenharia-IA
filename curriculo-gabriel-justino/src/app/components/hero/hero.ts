@@ -13,4 +13,7 @@ export class Hero {
   protected readonly papel = signal('Dev / Tech Lead');
   protected readonly frase = signal('Transformando problemas reais em soluções com tecnologia');
   protected readonly avatarUrl = signal('avatar.jpg'); // arquivo em public/
+
+  // Muda para true se a foto não carregar (evento error do <img>)
+  protected readonly fotoFalhou = signal(false);
 }

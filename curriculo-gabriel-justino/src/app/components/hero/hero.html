@@ -1,1 +1,22 @@
-<p>hero works!</p>
+<header class="hero">
+  <div class="hero__avatar">
+    @if (fotoFalhou()) {
+      <span class="hero__monograma" aria-hidden="true">GJ</span>
+    } @else {
+      <img
+        class="hero__foto"
+        [src]="avatarUrl()"
+        [alt]="'Foto de ' + nome()"
+        width="160"
+        height="160"
+        (error)="fotoFalhou.set(true)"
+      />
+    }
+  </div>
+
+  <div class="hero__info">
+    <p class="hero__papel">{{ papel() }}</p>
+    <h1 class="hero__nome">{{ nome() }}</h1>
+    <p class="hero__frase">{{ frase() }}</p>
+  </div>
+</header>

@@ -35,6 +35,7 @@
   --color-text-secondary: #a3aecb; // bio, datas, descrições (8.6:1)
   --color-accent: #7aa2ff; // nós da timeline, filtro ativo, links (7.7:1)
   --color-on-accent: #0a0f1e; // texto sobre fundo de acento (7.7:1)
+  --color-star-core: #ffffff; // núcleo das estrelas (cards e céu)
 }
 
 // ─── TOKENS DE COR — TEMA LIGHT ───────────────────────────
@@ -49,6 +50,7 @@
   --color-text-secondary: #4b5470; // 7.0:1 no fundo · 7.5:1 no card
   --color-accent: #3355d6; // 5.8:1 no fundo · 6.2:1 no card
   --color-on-accent: #ffffff; // texto sobre fundo de acento (6.2:1)
+  --color-star-core: #3355d6; // no céu claro, núcleo azul para não sumir
 }
 
 // ─── RESET ────────────────────────────────────────────────

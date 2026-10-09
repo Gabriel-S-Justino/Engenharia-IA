@@ -24,6 +24,7 @@
   <ul class="skills__lista">
     @for (skill of skillsFiltradas(); track skill.nome) {
       <li class="skills__item" [attr.data-nivel]="skill.nivel">
+        <span class="skills__estrela" aria-hidden="true"><span class="skills__nucleo"></span></span>
         <span class="skills__nome">{{ skill.nome }}</span>
         <span class="skills__nivel">{{ skill.nivel }}</span>
       </li>

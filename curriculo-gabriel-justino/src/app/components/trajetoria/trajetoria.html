@@ -1,1 +1,28 @@
-<p>trajetoria works!</p>
+<section class="trajetoria" aria-labelledby="trajetoria-titulo">
+  <h2 id="trajetoria-titulo" class="trajetoria__titulo">Trajetória</h2>
+
+  <ol class="trajetoria__lista">
+    @for (marco of marcos(); track marco.titulo) {
+      <li class="marco" [attr.data-tipo]="marco.tipo" [class.marco--destaque]="marco.destaque">
+        <span class="marco__no" aria-hidden="true"></span>
+
+        <div class="marco__conteudo">
+          <p class="marco__meta">
+            <span class="marco__periodo">{{ marco.periodo }}</span>
+            <span class="marco__situacao">{{ marco.situacao }}</span>
+          </p>
+          <h3 class="marco__titulo">{{ marco.titulo }}</h3>
+          <p class="marco__descricao">{{ marco.descricao }}</p>
+
+          @if (marco.tecnologias) {
+            <ul class="marco__tecnologias" aria-label="Tecnologias">
+              @for (tec of marco.tecnologias; track tec) {
+                <li class="marco__tecnologia">{{ tec }}</li>
+              }
+            </ul>
+          }
+        </div>
+      </li>
+    }
+  </ol>
+</section>

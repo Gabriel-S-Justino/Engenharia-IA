@@ -10,7 +10,7 @@ export class Hero {
   // Decisão consciente (Fase 3.1): dados estáticos em signal() por
   // consistência com o restante do projeto, mesmo sem mudar em runtime.
   protected readonly nome = signal('Gabriel Justino');
-  protected readonly papel = signal('Dev / Tech Lead');
+  protected readonly papel = signal('Desenvolvedor de Software');
   protected readonly frase = signal('Transformando problemas reais em soluções com tecnologia');
   protected readonly avatarUrl = signal('avatar.jpg'); // arquivo em public/
 

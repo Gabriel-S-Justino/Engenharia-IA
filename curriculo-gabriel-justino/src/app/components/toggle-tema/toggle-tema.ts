@@ -17,7 +17,13 @@ export class ToggleTema {
   constructor() {
     // effect: sincroniza o signal com algo FORA do Angular (o atributo do <html>).
     effect(() => {
-      document.documentElement.setAttribute('data-theme', this.tema());
+      const raiz = document.documentElement;
+      raiz.setAttribute('data-theme', this.tema());
+      // A barra do navegador acompanha o tema escolhido (não só o do sistema).
+      const fundo = getComputedStyle(raiz).getPropertyValue('--color-bg').trim();
+      document
+        .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
+        .forEach((meta) => (meta.content = fundo));
     });
   }
 

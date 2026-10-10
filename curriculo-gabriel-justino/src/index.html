@@ -31,14 +31,18 @@
   <meta name="theme-color" content="#0a0f1e" media="(prefers-color-scheme: dark)">
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
 
+  <!-- Endereço oficial da página (evita duplicatas em buscadores). -->
+  <link rel="canonical" href="https://engenharia-ia-ten.vercel.app/">
+
   <!-- Open Graph: o "cartão" de preview ao compartilhar o link.
        Robôs de preview não executam JavaScript, por isso fica no HTML estático.
-       og:image precisa virar URL ABSOLUTA quando o site tiver endereço público. -->
+       URLs absolutas: muitos robôs não resolvem caminhos relativos. -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://engenharia-ia-ten.vercel.app/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Gabriel Justino · Desenvolvedor de Software">
   <meta property="og:description" content="Estudante de ADS na UniAteneu. Projetos com React Native e Python, automações e soluções de software.">
-  <meta property="og:image" content="og-image.png">
+  <meta property="og:image" content="https://engenharia-ia-ten.vercel.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Planeta com anel ao lado do nome Gabriel Justino e da frase: Transformando problemas reais em soluções com tecnologia.">
